@@ -5,4 +5,5 @@ function Hello(props) {
     return <h1 class="hi">Hello World!</h1>;
 }
 
-ReactDOM.render(<Hello />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Hello />);
