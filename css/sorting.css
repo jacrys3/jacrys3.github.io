@@ -1,0 +1,11 @@
+.box {
+    background-color: #000;
+    display: inline-block;
+    margin-right: 1px;
+    width: 10px;
+}
+
+button {
+    height: 20px;
+    margin-bottom: 2px;
+}
