@@ -1,8 +1,7 @@
 let array = [];
 let length = 100;
 let heightArray = [];
-var speed = 2;
-
+var speed = 10;
 
 function updateHeights()
 {
@@ -12,36 +11,44 @@ function updateHeights()
     }
 }
 
+var executed = false;
+
 function bubbleSort()
 {
-    var swapped = false;
+    if (!executed) {
+        executed = true;
+        var swapped = false;
 
-    function bubbleSortPass(i)
-    {
-        if(heightArray[i] > heightArray[i + 1])
+        function bubbleSortPass(i, count)
         {
-            swap(i, i + 1);
-            swapped = true;
-        }
-        updateHeights();
-
-        if(i < length)
-        {
-            setTimeout(function(){
-                bubbleSortPass(i + 1);
-            }, speed);
-        }
-        else
-        {
-            if(swapped){
+            if(i < length) array[i].style.backgroundColor = "#000000";
+            if(heightArray[i] > heightArray[i + 1])
+            {
+                swap(i, i + 1);
+                swapped = true;
+            }
+            if(i < length - 1) array[i+1].style.backgroundColor = "#FF00FF";
+            
+            updateHeights();
+            if(i < length - count)
+            {
+                if(i == length - count - 1) count++;
                 setTimeout(function(){
-                    bubbleSort();
+                    bubbleSortPass(i + 1, count);
                 }, speed);
             }
+            else
+            {
+                if(swapped){
+                    setTimeout(function(){
+                        bubbleSort();
+                    }, speed);
+                }
+                executed = false;
+            }
         }
+        bubbleSortPass(0, 0);
     }
-
-    bubbleSortPass(0);
 }
 
 function swap(a, b)
@@ -53,7 +60,7 @@ function swap(a, b)
 
 class BlockElement extends HTMLDivElement
 {
-    constructor(height)
+    constructor()
     {
         super();
     }
@@ -63,6 +70,7 @@ customElements.define('block-element', BlockElement, { extends: 'div' })
 
 function createBoxes()
 {
+    executed = false;
     if(array.length > 0)
     {
         for(let i = 0; i < array.length; i++)
@@ -74,7 +82,6 @@ function createBoxes()
     {
         const block = document.createElement('div', {is: 'block-element'});
         block.className = "box";
-        
 
         const container = document.getElementById("border");
         container.appendChild(block);
@@ -89,5 +96,29 @@ function generateRandomHeights()
     for(let i = 0; i < length; i++)
     {
         heightArray[i] = Math.round(Math.random() * 500);
+    }
+}
+
+function changeSpeed()
+{
+    if(speed == 20)
+    {
+        speed = 10;
+        document.getElementById("speedbutton").textContent = "Normal";
+    }
+    else if(speed == 10)
+    {
+        speed = 5;
+        document.getElementById("speedbutton").textContent = "Fast";
+    }
+    else if(speed == 5)
+    {
+        speed = 1;
+        document.getElementById("speedbutton").textContent = "Super Fast!";
+    }
+    else if(speed == 1)
+    {
+        speed = 20;
+        document.getElementById("speedbutton").textContent = "Slow";
     }
 }

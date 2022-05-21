@@ -9,3 +9,12 @@ button {
     height: 20px;
     margin-bottom: 2px;
 }
+
+.border {
+    border: solid 1px #000000;
+    width: 1000px;
+    height: auto;
+    position: relative;
+    margin: 5px;
+    padding: 10px;
+}
