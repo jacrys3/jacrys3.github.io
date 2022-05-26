@@ -21,18 +21,18 @@ function bubbleSort()
 
         function bubbleSortPass(i, count)
         {
-            if(i < length) array[i].style.backgroundColor = "#000000";
+            if(i <= length) array[i].style.backgroundColor = "#000000";
             if(heightArray[i] > heightArray[i + 1])
             {
                 swap(i, i + 1);
                 swapped = true;
             }
             if(i < length - 1) array[i+1].style.backgroundColor = "#FF00FF";
-            
             updateHeights();
-            if(i < length - count)
+            
+            if(i < length)
             {
-                if(i == length - count - 1) count++;
+                if(i == count - 1) length -= 1;
                 setTimeout(function(){
                     bubbleSortPass(i + 1, count);
                 }, speed);
@@ -47,7 +47,7 @@ function bubbleSort()
                 executed = false;
             }
         }
-        bubbleSortPass(0, 0);
+        bubbleSortPass(0, length);
     }
 }
 
