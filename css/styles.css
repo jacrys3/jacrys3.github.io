@@ -13,16 +13,51 @@
     height: 20%;
     top: 0px;
     left: 0px;
+    text-align: center;
 }
 #name {
-    position: relative;
+    display: inline-block;
     border: solid black 1px;
-    width: 10%;
+    width: 12%;
     height: 30%;
     top: 35%;
     left: 8%;
 }
+#bar {
+    display: inline-block;
+    border: solid black 1px;
+    width: 12%;
+    height: 30%;
+    top: 35%;
+    left: 30%;
+}
 a.name:link {
     color: white;
     text-decoration: none;
+}
+a.name {
+    font-size: 25pt;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+#github:hover {
+    opacity: 70%;
+    transition-duration: .3s;
+}
+#github {
+    padding: .7%;
+}
+#linkedin:hover {
+    opacity: 70%;
+    transition-duration: .3s;
+}
+#linkedin {
+    opacity: 85%;
+    padding: .7%;
+}
+#end {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
