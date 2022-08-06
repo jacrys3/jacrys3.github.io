@@ -5,7 +5,7 @@ var speed = 10;
 
 function updateHeights()
 {
-    for(let i = 0; i < length; i++)
+    for(let i = 0; i < 100; i++)
     {
         array[i].style.height = heightArray[i] + "px";
     }
@@ -93,7 +93,7 @@ function createBoxes()
 
 function generateRandomHeights()
 {
-    for(let i = 0; i < length; i++)
+    for(let i = 0; i < 100; i++)
     {
         heightArray[i] = Math.round(Math.random() * 500);
     }
